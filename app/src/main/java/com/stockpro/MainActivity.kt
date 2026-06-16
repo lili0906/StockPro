@@ -17,6 +17,7 @@ import androidx.navigation.navArgument
 import com.stockpro.ui.screens.PantallaCatalogo
 import com.stockpro.ui.screens.PantallaEdicion
 import com.stockpro.ui.screens.PantallaLogin
+import com.stockpro.ui.screens.PantallaReporte
 import com.stockpro.viewmodel.StockViewModel
 
 class MainActivity : ComponentActivity() {
@@ -57,6 +58,12 @@ class MainActivity : ComponentActivity() {
                                 navController = navController,
                                 viewModel = stockViewModel,
                                 productoId = id
+                            )
+                        }
+                        composable("reporte") {
+                            PantallaReporte(
+                                navController = navController,
+                                viewModel = stockViewModel
                             )
                         }
                     }
