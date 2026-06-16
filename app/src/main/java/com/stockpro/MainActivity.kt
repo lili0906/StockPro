@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.stockpro.ui.screens.PantallaCatalogo
+import com.stockpro.ui.screens.PantallaEdicion
 import com.stockpro.ui.screens.PantallaLogin
 import com.stockpro.viewmodel.StockViewModel
 
@@ -43,6 +44,19 @@ class MainActivity : ComponentActivity() {
                                 navController = navController,
                                 viewModel = stockViewModel,
                                 nombreOperario = nombre
+                            )
+                        }
+                        composable(
+                            route = "edicion/{productoId}",
+                            arguments = listOf(
+                                navArgument("productoId") { type = NavType.IntType }
+                            )
+                        ) { backStackEntry ->
+                            val id = backStackEntry.arguments?.getInt("productoId") ?: -1
+                            PantallaEdicion(
+                                navController = navController,
+                                viewModel = stockViewModel,
+                                productoId = id
                             )
                         }
                     }
